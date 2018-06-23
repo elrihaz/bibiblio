@@ -11,7 +11,7 @@ export class BooksService {
     booksSubject = new Subject<Book[]>();
 
     constructor() {}
-    //
+
     emitBooks() {
         this.booksSubject.next(this.books);
       }
