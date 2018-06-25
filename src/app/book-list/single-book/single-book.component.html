@@ -2,9 +2,12 @@
     <div class="col-xs-12">
       <img style="max-width:400px;" *ngIf="book.photo" [src]="book.photo">
       <h1>{{ book.title }}</h1>
-      <h3>{{ book.author }}</h3>
+      <h3>{{ book.authorFirstName }} {{ book.authorLastName }} </h3>
       <p>{{ book.synopsis }}</p>
       <button class="btn btn-default" (click)="onBack()">Retour</button>
+      <button class="btn btn-default" 
+              (click)="onEditBook(id)"
+              style="margin-left: 10px;">Editer</button>
     </div>
   </div>
   

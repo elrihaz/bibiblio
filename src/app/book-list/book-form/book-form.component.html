@@ -11,8 +11,12 @@
       </div>
 
       <div class="form-group">
-        <label for="author">Auteur</label>
-        <input type="text" class="form-control" id="author" formControlName="author">
+        <label for="authorFirstName">Prénom de l'auteur</label>
+        <input type="text" class="form-control" id="authorFirstName" formControlName="authorFirstName">
+      </div>
+      <div class="form-group">
+        <label for="authorLastName">Nom de l'auteur</label>
+        <input type="text" class="form-control" id="authorLastName" formControlName="authorLastName">
       </div>
 
       <div class="form-group">
@@ -27,6 +31,7 @@
       </div>
 
       <button class="btn btn-success" [disabled]="bookForm.invalid || fileIsUploading" type="submit">Enregistrer</button>
+      <button class="btn btn-danger" [disabled]="fileIsUploading" (click)="onBack()" style="margin-left: 10px;">Annuler</button>
 
     </form>
   </div>

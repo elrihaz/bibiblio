@@ -1,9 +1,26 @@
 <div class="row">
   <div class="col-xs-12">
 
-    <h2>Vos livres</h2>
+      <div class="en-tete">
+          <div class="en-tete">
+            <h1>Vos livres</h1>        
+          </div>
+          
+          <div class="bas">
+              <button class="btn btn-info" style="height: 40px;" (click)="onNewBook()"><span class="glyphicon glyphicon-plus"></span></button> 
 
-    <div class="list-group">
+            </div>
+          
+         
+    
+        </div>
+        <div class="bas">
+            <a (click)="onTriTitre()">Trier par titre</a>
+            <a (click)="onTriAuteur()" >Trier par auteur</a>
+          </div>
+
+
+    <div class="list-group" style="margin-top: 10px;" >
 
       <button class="list-group-item"
               *ngFor="let book of books; let i = index"
@@ -16,15 +33,19 @@
                         (click)="onDeleteBook(book)">
                         <span class="glyphicon glyphicon-minus"></span>
                 </button>
+
+                <button class="btn btn-default pull-right"
+                        style="margin-right: 10px;"
+                        (click)="onEditBook(i)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                </button>
               </h3>
 
-              <p class="list-group-item-text">{{ book.author }}</p>
+              <p class="list-group-item-text">{{ book.authorFirstName }} {{ book.authorLastName }}</p>
 
       </button>
 
     </div>
-
-    <button class="btn btn-primary" (click)="onNewBook()">Nouveau livre</button>
 
   </div>
 </div>
