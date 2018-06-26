@@ -3,6 +3,7 @@ import { Book } from '../models/book.model';
 import { Subscription } from 'rxjs';
 import { BooksService } from '../services/books.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-book-list',
@@ -15,16 +16,39 @@ export class BookListComponent implements OnInit, OnDestroy {
   books: Book[];
   booksSubscription: Subscription;
 
+  filterCritere: string;
+
   constructor(  private booksService: BooksService,
                 private router: Router) { }
 
   ngOnInit() {
-    this.booksSubscription = this.booksService.booksSubject.subscribe(
+    this.filterCritere = this.booksService.filterCritere;
+
+    this.booksSubscription = this.booksService.booksSubject
+    .subscribe(
       (books: Book[]) => {
-        this.books = books;
+        this.books = books.filter(
+          (el) => {
+            return (el.authorLastName.toLowerCase().indexOf(this.booksService.filterCritere.toLowerCase()) > -1 ||
+            el.authorFirstName.toLowerCase().indexOf(this.booksService.filterCritere.toLowerCase()) > -1 ||
+            el.title.toLowerCase().indexOf(this.booksService.filterCritere.toLowerCase()) > -1);
+            }
+        );
       }
     );
+
     this.booksService.getBooks();
+    this.booksService.emitBooks();
+  }
+
+  onFilterBook(form: NgForm) {
+    this.booksService.filterCritere = form.value['filterCritere'];
+    this.booksService.emitBooks();
+  }
+
+  onDeleteCritere() {
+    this.filterCritere = '';
+    this.booksService.filterCritere = '';
     this.booksService.emitBooks();
   }
 

@@ -10,6 +10,7 @@ export class BooksService {
     books: Book[] = [];
     booksSubject = new Subject<Book[]>();
     critereTri = 'auteur';
+    filterCritere = '';
 
     constructor() {}
 

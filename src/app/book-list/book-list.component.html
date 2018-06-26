@@ -1,23 +1,41 @@
 <div class="row">
   <div class="col-xs-12">
 
+    <div class="en-tete">
       <div class="en-tete">
-          <div class="en-tete">
-            <h1>Vos livres</h1>        
-          </div>
-          
-          <div class="bas">
-              <button class="btn btn-info" style="height: 40px;" (click)="onNewBook()"><span class="glyphicon glyphicon-plus"></span></button> 
+        <h1>Vos livres</h1>
+      </div>
 
-            </div>
-          
-         
-    
-        </div>
-        <div class="bas">
-            <a (click)="onTriTitre()">Trier par titre</a>
-            <a (click)="onTriAuteur()" >Trier par auteur</a>
+      
+      <form (ngSubmit)="onFilterBook(f)" #f="ngForm" style="display: flex; align-items: flex-start; margin-top: 25px;">
+        <div class="input-group" style="width: 400px;">
+          <div class="form-group">
+            <input type="text" class="form-control" style="height: 30px;" name="filterCritere" [(ngModel)]="filterCritere" required>
           </div>
+          <div class="input-group-btn">
+            <button class="btn btn-secondary" style="height: 30px;" type="submit" [disabled]="f.invalid">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <button class="btn btn-secondary" style="height: 30px;" (click)="onDeleteCritere()">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+ 
+
+      <div class="bas">
+        <button class="btn btn-info" style="height: 40px;" (click)="onNewBook()">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="bas">
+      <a (click)="onTriTitre()">Trier par titre</a>
+      <a (click)="onTriAuteur()">Trier par auteur</a>
+    </div>
 
 
     <div class="list-group" style="margin-top: 10px;" >

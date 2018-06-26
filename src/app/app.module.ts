@@ -15,6 +15,10 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { BooksService } from './services/books.service';
 import { EditBookComponent } from './book-list/edit-book/edit-book.component';
+import { ALireListComponent } from './a-lire-list/a-lire-list.component';
+import { AVoirListComponent } from './a-voir-list/a-voir-list.component';
+import { ALireService } from './services/a-lire.service';
+import { AVoirService } from './services/a-voir.service';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -23,6 +27,8 @@ const appRoutes: Routes = [
   {path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent},
   {path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent},
   {path: 'books/edit/:id', canActivate: [AuthGuardService], component: EditBookComponent},
+  {path: 'a-lire', canActivate: [AuthGuardService], component: ALireListComponent},
+  {path: 'a-voir', canActivate: [AuthGuardService], component: AVoirListComponent},
   {path: '', redirectTo: 'books', pathMatch: 'full' },
   {path: '**', redirectTo: 'books' }
 ];
@@ -36,7 +42,9 @@ const appRoutes: Routes = [
     SingleBookComponent,
     BookFormComponent,
     HeaderComponent,
-    EditBookComponent
+    EditBookComponent,
+    ALireListComponent,
+    AVoirListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,9 @@ const appRoutes: Routes = [
   providers: [
     AuthGuardService,
     AuthService,
-    BooksService
+    BooksService,
+    ALireService,
+    AVoirService
   ],
   bootstrap: [AppComponent]
 })
