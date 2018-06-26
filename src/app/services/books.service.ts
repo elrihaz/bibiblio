@@ -9,10 +9,16 @@ export class BooksService {
 
     books: Book[] = [];
     booksSubject = new Subject<Book[]>();
+    critereTri = 'auteur';
 
     constructor() {}
 
     emitBooks() {
+        if ( this.critereTri === 'titre') {
+            this.triTitreBooks();
+        } else {
+            this.triAuteurBooks();
+        }
         this.booksSubject.next(this.books);
       }
 
@@ -30,19 +36,20 @@ export class BooksService {
     }
 
     getSingleBook(id: number) {
-        return new Promise(
-            (resolve, reject) => {
-                firebase.database().ref('/books/' + id).once('value').then(
-                    (data: DataSnapshot) => {
-                        resolve(data.val());
-                    },
-                    (error) => {
-                        reject(error);
-                    }
-                );
-            }
-        );
+        return this.books.find( bookEl => bookEl.id === id );
     }
+
+    newId() {
+        let len = this.books.length;
+        let max = -Infinity;
+        while (len--) {
+            if (this.books[len].id > max) {
+            max = this.books[len].id;
+            }
+        }
+        return max + 1;
+    }
+
 
     createNewBook(newBook: Book) {
         this.books.push(newBook);
@@ -112,42 +119,38 @@ export class BooksService {
         );
     }
 
-    triTitreBooks(books: Book[]) {
+    triTitreBooks() {
         let tab_en_ordre = false;
-        let taille = books.length;
+        let taille = this.books.length;
         while (!tab_en_ordre) {
             tab_en_ordre = true;
             for (let i = 0 ; i < taille - 1 ; i++) {
-                if (books[i].title.toLocaleUpperCase() > books[i + 1].title.toLocaleUpperCase()) {
-                    const temp = books[i];
-                    books[i] = books[i + 1];
-                    books[i + 1] = temp;
+                if (this.books[i].title.toLocaleUpperCase() > this.books[i + 1].title.toLocaleUpperCase()) {
+                    const temp = this.books[i];
+                    this.books[i] = this.books[i + 1];
+                    this.books[i + 1] = temp;
                     tab_en_ordre = false;
                 }
             }
             taille--;
         }
-        this.saveBooks();
-        this.emitBooks();
     }
 
-    triAuteurBooks(books: Book[]) {
+    triAuteurBooks() {
         let tab_en_ordre = false;
-        let taille = books.length;
+        let taille = this.books.length;
         while (!tab_en_ordre) {
             tab_en_ordre = true;
             for (let i = 0 ; i < taille - 1 ; i++) {
-                if (books[i].authorLastName.toLocaleUpperCase() > books[i + 1].authorLastName.toLocaleUpperCase()) {
-                    const temp = books[i];
-                    books[i] = books[i + 1];
-                    books[i + 1] = temp;
+                if (this.books[i].authorLastName.toLocaleUpperCase() > this.books[i + 1].authorLastName.toLocaleUpperCase()) {
+                    const temp = this.books[i];
+                    this.books[i] = this.books[i + 1];
+                    this.books[i + 1] = temp;
                     tab_en_ordre = false;
                 }
             }
             taille--;
         }
-        this.saveBooks();
-        this.emitBooks();
     }
 
 }

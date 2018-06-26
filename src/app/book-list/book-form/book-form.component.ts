@@ -39,8 +39,9 @@ export class BookFormComponent implements OnInit {
     const authorFirstName = this.bookForm.get('authorFirstName').value;
     const authorLastName = this.bookForm.get('authorLastName').value;
     const synopsis = this.bookForm.get('synopsis').value;
+    const id = this.booksService.newId();
 
-    const newBook = new Book(title, authorFirstName, authorLastName);
+    const newBook = new Book(id, title, authorFirstName, authorLastName);
     newBook.synopsis = synopsis;
     if (this.fileUrl && this.fileUrl !== '') {
       newBook.photo = this.fileUrl;

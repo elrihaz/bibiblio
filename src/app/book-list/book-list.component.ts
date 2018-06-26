@@ -47,11 +47,13 @@ export class BookListComponent implements OnInit, OnDestroy {
   }
 
   onTriTitre() {
-    this.booksService.triTitreBooks(this.books);
+    this.booksService.critereTri = 'titre';
+    this.booksService.emitBooks();
   }
 
   onTriAuteur() {
-    this.booksService.triAuteurBooks(this.books);
+    this.booksService.critereTri = 'auteur';
+    this.booksService.emitBooks();
   }
 
 

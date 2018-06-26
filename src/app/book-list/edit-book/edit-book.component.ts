@@ -38,7 +38,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
     this.booksService.emitBooks();
 
     const id = this.route.snapshot.params['id'];
-    this.book = this.books[id];
+    this.book = this.booksService.getSingleBook(+id);
 
     this.initForm();
   }
@@ -67,6 +67,7 @@ export class EditBookComponent implements OnInit, OnDestroy {
   }
 
   onUploadFile(file: File) {
+    // effacer la photo precedente
     if (this.book.photo) {
       const storageRef = firebase.storage().refFromURL(this.book.photo);
       storageRef.delete().then(
