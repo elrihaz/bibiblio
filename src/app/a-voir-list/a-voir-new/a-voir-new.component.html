@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-8 col-offset-2">
+
+    <h2>Nouveau film / série à voir</h2>
+
+    <form [formGroup]="videoForm" (ngSubmit)="onSaveAVoir()">
+
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" class="form-control" id="title" formControlName="title">
+      </div>
+
+      <div class="form-group">
+        <label for="realisatorFirstName">Prénom de l'auteur</label>
+        <input type="text" class="form-control" id="realisatorFirstName" formControlName="realisatorFirstName">
+      </div>
+      <div class="form-group">
+        <label for="realisatorLastName">Nom de l'auteur</label>
+        <input type="text" class="form-control" id="realisatorLastName" formControlName="realisatorLastName">
+      </div>
+
+      <div class="form-group">
+        <label for="type">Type de vidéo</label>
+        <select id="type" class="form-control" formControlName="type">
+          <option value="film">Film</option>
+          <option value="série">Série</option>
+        </select>
+      </div>
+
+      <button class="btn btn-success" [disabled]="videoForm.invalid" type="submit">Enregistrer</button>
+      <button class="btn btn-danger" (click)="onBack()" style="margin-left: 10px;">Annuler</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+

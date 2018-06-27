@@ -1,3 +1,38 @@
-<p>
-  a-lire-list works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class="en-tete">
+      <div class="en-tete">
+        <h1>Livres à lire</h1>
+      </div> 
+
+      <div class="en-tete">
+        <button class="btn btn-info" style="height: 40px; margin-top: 15px;" (click)="onNewALire()">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="list-group" style="margin-top: 10px;" >
+
+      <div class="list-group-item"
+              *ngFor="let book of aLire">
+
+              <h3 class="list-group-item-heading">
+                {{ book.title }}
+
+                <button class="btn btn-default pull-right"
+                        (click)="onDeleteALire(book)">
+                        <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </h3>
+
+              <p class="list-group-item-text">{{ book.authorFirstName }} {{ book.authorLastName }}</p>
+
+            </div>
+
+    </div>
+
+  </div>
+</div>

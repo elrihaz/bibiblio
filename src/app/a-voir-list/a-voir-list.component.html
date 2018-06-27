@@ -1,3 +1,38 @@
-<p>
-  a-voir-list works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class="en-tete">
+      <div class="en-tete">
+        <h1>Films / séries à voir</h1>
+      </div> 
+
+      <div class="en-tete">
+        <button class="btn btn-info" style="height: 40px; margin-top: 15px;" (click)="onNewAVoir()">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="list-group" style="margin-top: 10px;" >
+
+      <div class="list-group-item"
+              *ngFor="let video of aVoir">
+
+              <h3 class="list-group-item-heading">
+                {{ video.title }} ({{ video.type }})
+
+                <button class="btn btn-default pull-right"
+                        (click)="onDeleteAVoir(video)">
+                        <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </h3>
+
+              <p class="list-group-item-text">{{ video.realisatorFirstName }} {{ video.realisatorLastName }}</p>
+
+            </div>
+
+    </div>
+
+  </div>
+</div>

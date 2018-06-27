@@ -19,6 +19,8 @@ import { ALireListComponent } from './a-lire-list/a-lire-list.component';
 import { AVoirListComponent } from './a-voir-list/a-voir-list.component';
 import { ALireService } from './services/a-lire.service';
 import { AVoirService } from './services/a-voir.service';
+import { ALireNewComponent } from './a-lire-list/a-lire-new/a-lire-new.component';
+import { AVoirNewComponent } from './a-voir-list/a-voir-new/a-voir-new.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
   {path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent},
   {path: 'books/edit/:id', canActivate: [AuthGuardService], component: EditBookComponent},
   {path: 'a-lire', canActivate: [AuthGuardService], component: ALireListComponent},
+  {path: 'a-lire/new', canActivate: [AuthGuardService], component: ALireNewComponent},
   {path: 'a-voir', canActivate: [AuthGuardService], component: AVoirListComponent},
+  {path: 'a-voir/new', canActivate: [AuthGuardService], component: AVoirNewComponent},
   {path: '', redirectTo: 'books', pathMatch: 'full' },
   {path: '**', redirectTo: 'books' }
 ];
@@ -44,7 +48,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     EditBookComponent,
     ALireListComponent,
-    AVoirListComponent
+    AVoirListComponent,
+    ALireNewComponent,
+    AVoirNewComponent
   ],
   imports: [
     BrowserModule,
