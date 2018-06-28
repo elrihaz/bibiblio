@@ -1,0 +1,19 @@
+.en-tete {
+    display: flex;
+    justify-content: space-between;      
+}
+
+.bas {
+    display: flex;
+    align-items: flex-end;
+}
+
+a {
+    margin-right: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.row {
+    background-color: #ebedeb;
+}
