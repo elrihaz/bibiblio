@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-12" style="margin-top: 10px;">
 
-    <div class="en-tete">
+    <div class="en-tete" >
       <div class="en-tete">
         <h1>Vos livres</h1>
       </div>
@@ -41,6 +41,7 @@
     <div class="list-group" style="margin-top: 10px;" >
 
       <button class="list-group-item"
+              style="margin-bottom: 5px;"
               *ngFor="let book of books"
               (click)="onViewBook(book.id)">
 
