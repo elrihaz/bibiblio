@@ -1,10 +1,10 @@
 <div class="row">
       
-        <div class="col-xs-4" style="text-align: center;">
+        <div class="col-md-4" style="text-align: center;">
           <img style="max-width:350px;" *ngIf="book.photo" [src]="book.photo">
         </div>
         
-        <div class="col-xs-8">
+        <div class="col-md-8">
       <h2>Editer un livre</h2>
   
       <form [formGroup]="bookForm" (ngSubmit)="onSaveBook()">
@@ -35,8 +35,10 @@
           <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
         </div>
   
-        <button class="btn btn-success" [disabled]="bookForm.invalid || fileIsUploading" type="submit">Enregistrer</button>
-        <button class="btn btn-danger" [disabled]="fileIsUploading" (click)="onBack()" style="margin-left: 10px;">Annuler</button>
+        <p>
+          <button class="btn btn-success" [disabled]="bookForm.invalid || fileIsUploading" type="submit">Enregistrer</button>
+          <button class="btn btn-danger" [disabled]="fileIsUploading" (click)="onBack()" style="margin-left: 10px;">Annuler</button>
+        </p>
   
       </form>
     </div>

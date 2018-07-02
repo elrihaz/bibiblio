@@ -1,66 +1,61 @@
 <div class="row">
-  <div class="col-xs-12" style="margin-top: 10px;">
 
-    <div class="en-tete" >
-      <div class="en-tete">
+  <div class="col-md-4" style="margin-top: 10px;">
+
+
         <h1>Vos livres</h1>
-      </div>
+        <p>
+          <a (click)="onTriTitre()">Trier par titre</a>
+          <a (click)="onTriAuteur()">Trier par auteur</a>
 
-      
-      <form (ngSubmit)="onFilterBook(f)" #f="ngForm" style="display: flex; align-items: flex-start; margin-top: 25px;">
-        <div class="input-group" style="width: 400px;">
-          <div class="form-group">
-            <input type="text" class="form-control" style="height: 30px;" name="filterCritere" [(ngModel)]="filterCritere" required>
-          </div>
-          <div class="input-group-btn">
-            <button class="btn btn-secondary" style="height: 30px;" type="submit" [disabled]="f.invalid">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-            <button class="btn btn-secondary" style="height: 30px;" (click)="onDeleteCritere()">
-              <span class="glyphicon glyphicon-remove"></span>
-            </button>
-          </div>
+        </p>
+  </div>
+
+  <div class="col-md-6" style="margin-top: 5px;">
+    <form (ngSubmit)="onFilterBook(f)" #f="ngForm" style="margin-top: 25px;">
+      <div class="input-group" style="width: 400px;">
+        <div class="form-group">
+          <input type="text" class="form-control" style="height: 30px;" name="filterCritere" [(ngModel)]="filterCritere" required>
         </div>
-      </form>
- 
-
-      <div class="bas">
-        <button class="btn btn-info" style="height: 40px;" (click)="onNewBook()">
-          <span class="glyphicon glyphicon-plus"></span>
-        </button>
+        <div class="input-group-btn">
+          <button class="btn btn-secondary" style="height: 30px;" type="submit" [disabled]="f.invalid">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+          <button class="btn btn-secondary" style="height: 30px;" (click)="onDeleteCritere()">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div>
       </div>
+    </form>
+  </div>
 
-    </div>
+  <div class=" col-md-2 butPlus">
+      <button class="btn btn-info" style="height: 40px;" (click)="onNewBook()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+  </div>
 
-    <div class="bas">
-      <a (click)="onTriTitre()">Trier par titre</a>
-      <a (click)="onTriAuteur()">Trier par auteur</a>
-    </div>
+</div>
 
+<div class="row">
+  <div class="col-md-12">
+    <div class="list-group" style="margin-top: 10px;">
 
-    <div class="list-group" style="margin-top: 10px;" >
+      <button class="list-group-item" style="margin-bottom: 5px;" *ngFor="let book of books" (click)="onViewBook(book.id)">
 
-      <button class="list-group-item"
-              style="margin-bottom: 5px;"
-              *ngFor="let book of books"
-              (click)="onViewBook(book.id)">
+        <h3 class="list-group-item-heading">
+          {{ book.title }}
 
-              <h3 class="list-group-item-heading">
-                {{ book.title }}
+          <button class="btn btn-default pull-right" (click)="onDeleteBook(book)">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
 
-                <button class="btn btn-default pull-right"
-                        (click)="onDeleteBook(book)">
-                        <span class="glyphicon glyphicon-minus"></span>
-                </button>
+          <button class="btn btn-default pull-right" style="margin-right: 10px;" (click)="onEditBook(book.id)">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </h3>
 
-                <button class="btn btn-default pull-right"
-                        style="margin-right: 10px;"
-                        (click)="onEditBook(book.id)">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-              </h3>
-
-              <p class="list-group-item-text">{{ book.authorFirstName }} {{ book.authorLastName }}</p>
+        <p class="list-group-item-text">{{ book.authorFirstName }} {{ book.authorLastName }}</p>
 
       </button>
 
