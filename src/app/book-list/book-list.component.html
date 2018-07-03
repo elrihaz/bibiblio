@@ -47,26 +47,19 @@
             <h3 class="list-group-item-heading">
               {{ book.title }}
             </h3>
+            <p class="list-group-item-text">{{ book.authorFirstName }} {{ book.authorLastName }}</p>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default pull-right" (click)="onDeleteBook(book)">
-              <span class="glyphicon glyphicon-minus"></span>
-            </button>
-  
-            <button class="btn btn-default pull-right" style="margin-right: 10px;" (click)="onEditBook(book.id)">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </button>
+              <button class="btn btn-default pull-right" style="margin: 8px 8px 8px 8px;" (click)="onDeleteBook(book)">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+    
+              <button class="btn btn-default pull-right" style="margin-top: 8px;" (click)="onEditBook(book.id)">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>            
+         
 
           </div>
-          <div class="row">
-            <div class="col-md-10">
-              <p class="list-group-item-text">{{ book.authorFirstName }} {{ book.authorLastName }}</p>
-
-            </div>
-
-          </div>
-  
-  
 
         </div>  
 
