@@ -2,8 +2,8 @@
     background-color: #ebedeb;
 }
 
-img {
-    max-width:350px;
+.couverture {
+    max-width: 350px;
     margin-top: 25px;
     margin-bottom: 25px;
 }
@@ -46,6 +46,10 @@ p {
     
     p {
         font-size: 1em;
-    }  
+    }
+
+    .couverture {
+        width: 300px;
+    }
   
   }

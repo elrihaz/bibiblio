@@ -2,7 +2,7 @@
     background-color: #ebedeb;
 }
 
-img {
+.couverture {
     max-width:350px;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -47,5 +47,9 @@ h2 {
     
     p {
         font-size: 1em;
+    }
+
+    .couverture {
+        max-width:300px;
     }
 }
