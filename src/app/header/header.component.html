@@ -2,19 +2,19 @@
   <div class="container-fluid">
 
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <a routerLink="books">Bibliothèque</a>
       </li>
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <a routerLink="a-lire">A lire</a>
       </li>
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <a routerLink="a-voir">A voir</a>
       </li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li routerLinkActive="active" *ngIf="!isAuth">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <a routerLink="auth/signup">Créer un compte</a>
       </li>
       <li routerLinkActive="active" *ngIf="!isAuth">
