@@ -23,8 +23,8 @@ import { ALireNewComponent } from './a-lire-list/a-lire-new/a-lire-new.component
 import { AVoirNewComponent } from './a-voir-list/a-voir-new/a-voir-new.component';
 
 const appRoutes: Routes = [
-  {path: 'auth/signup', component: SignupComponent},
   {path: 'auth/signin', component: SigninComponent},
+  {path: 'auth/signup', canActivate: [AuthGuardService], component: SignupComponent},
   {path: 'books', canActivate: [AuthGuardService], component: BookListComponent},
   {path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent},
   {path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent},
