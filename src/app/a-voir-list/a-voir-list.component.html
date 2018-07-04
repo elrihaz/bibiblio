@@ -30,7 +30,9 @@
                   </h3>
     
                   <p class="list-group-item-text">{{ video.realisatorFirstName }} {{ video.realisatorLastName }}</p>
-    
+
+                  <p *ngIf="video.lien" class="list-group-item-text" style="margin-top: 5px;"><a href="{{video.lien}}" target="_blank">+ d'infos</a></p>
+                  
                 </div>
     
         </div>

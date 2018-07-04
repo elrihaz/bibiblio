@@ -28,6 +28,11 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="lien">Lien pour + d'infos</label>
+        <input type="text" class="form-control" id="lien" formControlName="lien">
+      </div>
+
       <button class="btn btn-success" [disabled]="videoForm.invalid" type="submit">Enregistrer</button>
       <button class="btn btn-danger" (click)="onBack()" style="margin-left: 10px;">Annuler</button>
 

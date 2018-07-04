@@ -27,7 +27,8 @@ export class AVoirNewComponent implements OnInit {
       title: ['', Validators.required],
       realisatorFirstName: ['', Validators.required],
       realisatorLastName: ['', Validators.required],
-      type: ['film', Validators.required]
+      type: ['film', Validators.required],
+      lien: ['']
     });
   }
 
@@ -37,8 +38,9 @@ export class AVoirNewComponent implements OnInit {
     const realisatorLastName = this.videoForm.get('realisatorLastName').value;
     const type = this.videoForm.get('type').value;
     const id = this.aVoirService.newId();
+    const lien = this.videoForm.get('lien').value;
 
-    const newVideo = new Video(id, title, realisatorFirstName, realisatorLastName, type);
+    const newVideo = new Video(id, title, realisatorFirstName, realisatorLastName, type, lien);
 
     this.aVoirService.createNewAVoir(newVideo);
     this.router.navigate(['/a-voir']);
