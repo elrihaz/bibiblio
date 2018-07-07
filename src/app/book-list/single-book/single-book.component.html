@@ -13,7 +13,15 @@
       <button class="btn btn-default" (click)="onEditBook(book.id)" style="margin-left: 10px;">
         <span class="glyphicon glyphicon-pencil"></span>
       </button>
-      <button class="btn btn-default" (click)="onBack()" style="margin-left: 15px;">Retour</button>
+      <button class="btn btn-default" (click)="onPrevious()" style="margin-left: 10px;" [disabled]="index <= 0">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </button>
+      <button class="btn btn-default" (click)="onNext()" style="margin-left: 10px;" [disabled]="index >= maxIndex">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </button>
+      <button class="btn btn-default" (click)="onBack()" style="margin-left: 10px;">
+          <span class="glyphicon glyphicon-list-alt"></span>
+      </button>
     </p>
 
   </div>
